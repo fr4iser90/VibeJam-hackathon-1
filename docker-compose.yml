@@ -1,0 +1,38 @@
+services:
+  frontend:
+    build:
+      context: .
+      dockerfile: ./Dockerfile.frontend
+    image: vibejam-frontend:latest
+    container_name: vibejam-frontend
+    restart: unless-stopped
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+    networks:
+      - vibejam-net
+
+  backend:
+    build:
+      context: .
+      dockerfile: ./Dockerfile.backend
+    image: vibejam-backend:latest
+    container_name: vibejam-backend
+    restart: unless-stopped
+    ports:
+      - "8999:8000"
+    volumes:
+      - ./backend:/app
+    environment:
+      - ENVIRONMENT=development
+    networks:
+      - vibejam-net
+
+networks:
+  vibejam-net:
+    name: vibejam-network
+    driver: bridge 
