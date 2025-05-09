@@ -1,5 +1,5 @@
 # VibeJam Hackathon Setup
-
+# EDIT 1:43 : Testlink: http://fr4iser.com:5173/
 Dieses Repository enthält die Basis-Konfiguration für das VibeJam Hackathon-Projekt.
 
 ## 🚀 Schnellstart
