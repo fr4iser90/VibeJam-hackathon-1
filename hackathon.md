@@ -1,31 +1,37 @@
 # VibeJam Hackathon #1
 
-## 🎯 Aufgabe
-[HIER DIE AUFGABE EINFÜGEN]
+## 🎯 Task
+Hackathon UI webinterface mit Login React uvicorn
 
-## ⏰ Zeitplan
+## ⏰ Preparation Phase (30 Minutes):
+- 0-5m: Understand Theme
+- 5-10m: Define Techstack
+- 10-20m: Add Tools & Requirements
+- 20-30m: Setup & Planning
+
+## ⏰ Coding Phase (60 Minutes):
 - 0-15m: Setup & Planning
 - 15-45m: Core Development
 - 45-55m: Testing & Refinement
 - 55-60m: Final Review
 
-## 🛠️ Technologie-Stack
-- Frontend: React + TypeScript (Vite)
-- Backend: FastAPI + SQLite
+## 🛠️ Technology Stack
+- Frontend: 
+- Backend: 
 - Development: Nix-Shell
 
-## 📝 Notizen
-- [ ] Setup abgeschlossen
-- [ ] Frontend Grundstruktur
+## 📝 Notes
+- [ ] Setup completed
+- [ ] Frontend basic structure
 - [ ] Backend API
-- [ ] Datenbank-Schema
+- [ ] Database Schema
 - [ ] Testing
 - [ ] Deployment
 
-## 🎨 Design-Entscheidungen
-- [ ] UI/UX Konzept
-- [ ] Farbschema
-- [ ] Komponenten-Struktur
+## 🎨 Design Decisions
+- [ ] UI/UX Concept
+- [ ] Color Scheme
+- [ ] Component Structure
 
 ## 🔍 Testing
 - [ ] Frontend Tests
@@ -35,4 +41,4 @@
 ## 🚀 Deployment
 - [ ] Frontend Build
 - [ ] Backend Setup
-- [ ] Datenbank-Migration 
+- [ ] Database Migration 

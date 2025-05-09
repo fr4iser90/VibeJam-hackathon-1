@@ -99,27 +99,32 @@ pkgs.mkShell {
       echo "🎮 Starting VibeJam Session #1" | figlet | lolcat
       
       # Prompt for hackathon task
-      echo "📝 Bitte geben Sie die Hackathon-Aufgabe ein:"
+      echo "📝 Please enter the hackathon task:"
       read -p "> " hackathon_task
       
       # Update hackathon.md with the task
-      sed -i "s/\[HIER DIE AUFGABE EINFÜGEN\]/$hackathon_task/" hackathon.md
+      sed -i "s/\[ENTER TASK HERE]/$hackathon_task/" hackathon.md
       
-      echo "Session Plan:"
-      echo "  0-15m: Setup & Planning"
-      echo "  15-45m: Core Development"
-      echo "  45-55m: Testing & Refinement"
-      echo "  55-60m: Final Review"
+      echo "Workflow:"
+      echo "1. Preparation Phase (No Timer)"
+      echo "  - AI analyzes the task"
+      echo "  - AI selects the tech stack"
+      echo "  - AI plans the project structure"
+      echo "  - Setup project with 'quick-start'"
       echo ""
-      echo "Timer started in background. You can continue working!"
+      echo "2. Coding Phase (60 minutes)"
+      echo "  - AI writes the code"
+      echo "  - AI runs tests"
+      echo "  - AI optimizes and refactors"
+      echo ""
       echo "Use 'vibe-check' to update your status"
       echo "Use 'vibe-progress' to show progress"
       echo ""
-      echo "📋 Hackathon.md wurde mit der Aufgabe aktualisiert!"
+      echo "📋 Hackathon.md has been updated with the task!"
       echo ""
       
-      # Start session timer in background
-      vibe-timer 60 "VibeJam Session Complete!" &
+      # Start coding phase timer when ready
+      echo "⏰ Timer will start when you run 'quick-start'"
     }
 
     vibe-progress() {
@@ -237,6 +242,9 @@ EOL
       
       echo "✨ Setup complete! Use 'dev-all' to start both servers"
       echo "📝 Edit backend/requirements.txt to add your project dependencies"
+      
+      echo "🚀 Starting Coding Phase Timer!" | figlet | lolcat
+      vibe-timer 60 "Coding phase complete!" &
     }
     
     echo "🚀 VibeJam Development Environment"
