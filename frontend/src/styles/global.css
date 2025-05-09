@@ -1,0 +1,41 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #282c34;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.App {
+  text-align: center;
+}
+
+.game-container {
+  width: 800px; /* As per detailed_plan.md */
+  height: 600px; /* As per detailed_plan.md */
+  background-color: #f0f0f0; /* Simple contrasting background */
+  border: 2px solid #333;
+  position: relative; /* For positioning game elements */
+  margin: 20px auto;
+  color: #333; /* Text inside game container should be dark */
+}
+
+.game-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 20px;
+  background-color: #e0e0e0;
+  border-bottom: 1px solid #ccc;
+}
+
+.lives, .score, .timer {
+  font-size: 1.2em;
+  font-weight: bold;
+} 

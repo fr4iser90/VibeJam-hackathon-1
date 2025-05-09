@@ -1,7 +1,7 @@
 # VibeJam Hackathon #1
 
 ## 🎯 Task
-Hackathon UI webinterface mit Login React uvicorn
+Hackathon UI webinterface React - Magic Button Game - Funny Frontend App
 
 ## ⏰ Preparation Phase (30 Minutes):
 - 0-5m: Understand Theme
@@ -16,29 +16,29 @@ Hackathon UI webinterface mit Login React uvicorn
 - 55-60m: Final Review
 
 ## 🛠️ Technology Stack
-- Frontend: 
-- Backend: 
+- Frontend: React
+- Theme: Funny / Whimsical
 - Development: Nix-Shell
 
 ## 📝 Notes
 - [ ] Setup completed
 - [ ] Frontend basic structure
-- [ ] Backend API
-- [ ] Database Schema
+- [N/A] Backend API (Frontend only)
+- [N/A] Database Schema (Frontend only)
 - [ ] Testing
 - [ ] Deployment
 
 ## 🎨 Design Decisions
-- [ ] UI/UX Concept
+- [ ] UI/UX Concept: Funny/Whimsical Magic Button Game
 - [ ] Color Scheme
 - [ ] Component Structure
 
 ## 🔍 Testing
 - [ ] Frontend Tests
-- [ ] Backend Tests
-- [ ] Integration Tests
+- [N/A] Backend Tests (Frontend only)
+- [ ] Frontend Component Integration Tests
 
 ## 🚀 Deployment
 - [ ] Frontend Build
-- [ ] Backend Setup
-- [ ] Database Migration 
+- [N/A] Backend Setup (Frontend only)
+- [N/A] Database Migration (Frontend only) 

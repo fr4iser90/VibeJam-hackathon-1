@@ -1,24 +1,7 @@
 { pkgs ? import <nixpkgs> {} }:
 
-let
-  pythonEnv = pkgs.python3.withPackages (ps: with ps; [
-    # Essential dependencies
-    fastapi
-    uvicorn
-    sqlalchemy
-    aiosqlite
-    python-dotenv
-    pydantic
-    
-    # Development tools
-    black
-    mypy
-    pylint
-  ]);
-in
 pkgs.mkShell {
   buildInputs = [
-    pythonEnv
     pkgs.nodejs_20
     pkgs.nodePackages.npm
     pkgs.nodePackages.typescript
@@ -103,7 +86,13 @@ pkgs.mkShell {
       read -p "> " hackathon_task
       
       # Update hackathon.md with the task
-      sed -i "s/\[ENTER TASK HERE]/$hackathon_task/" hackathon.md
+      # Ensure hackathon.md exists or handle error
+      if [ -f "hackathon.md" ]; then
+        sed -i "s/\[ENTER TASK HERE\]/$hackathon_task/" hackathon.md
+        echo "📋 Hackathon.md has been updated with the task!"
+      else
+        echo "⚠️ Warning: hackathon.md not found. Task not updated."
+      fi
       
       echo "Workflow:"
       echo "1. Preparation Phase (No Timer)"
@@ -119,8 +108,6 @@ pkgs.mkShell {
       echo ""
       echo "Use 'vibe-check' to update your status"
       echo "Use 'vibe-progress' to show progress"
-      echo ""
-      echo "📋 Hackathon.md has been updated with the task!"
       echo ""
       
       # Start coding phase timer when ready
@@ -146,20 +133,12 @@ pkgs.mkShell {
     
     # --- Development Aliases ---
     alias dev-fe="cd frontend && npm run dev"
-    alias dev-be="cd backend && uvicorn main:app --reload --port 8000"
-    alias dev-all="tmux new-session -d -s vibejam 'cd frontend && npm run dev' \; split-window -h 'cd backend && uvicorn main:app --reload --port 8000' \; attach"
     
     # --- Frontend Aliases ---
     alias fe-install="cd frontend && npm install"
     alias fe-dev="cd frontend && npm run dev"
     alias fe-build="cd frontend && npm run build"
     alias fe-lint="cd frontend && npm run lint"
-    
-    # --- Backend Aliases ---
-    alias be-install="cd backend && pip install -r requirements.txt"
-    alias be-dev="cd backend && uvicorn main:app --reload"
-    alias be-test="cd backend && pytest"
-    alias be-lint="cd backend && pylint **/*.py"
     
     # --- Docker Aliases ---
     alias d-up="docker-compose up"
@@ -173,8 +152,6 @@ pkgs.mkShell {
     
     # --- Hot Reload Aliases ---
     alias hot-fe="cd frontend && npm run dev -- --host"
-    alias hot-be="cd backend && uvicorn main:app --reload --host 0.0.0.0 --port 8000"
-    alias hot-all="tmux new-session -d -s vibejam 'cd frontend && npm run dev -- --host' \; split-window -h 'cd backend && uvicorn main:app --reload --host 0.0.0.0 --port 8000' \; attach"
     
     # --- Git Aliases ---
     alias gs="git status"
@@ -204,57 +181,25 @@ pkgs.mkShell {
         npm create vite@latest . -- --template react-ts
         npm install
         cd ..
+      else
+        echo "Frontend directory already exists."
       fi
       
-      # Create backend
-      if [ ! -d "backend" ]; then
-        echo "Creating backend..."
-        mkdir backend
-        cd backend
-        
-        # Create minimal requirements.txt with placeholders
-        echo "Creating requirements.txt..."
-        cat > requirements.txt << EOL
-# Core dependencies
-fastapi>=0.110.0
-uvicorn>=0.27.1
-python-dotenv>=1.0.1
-pydantic>=2.6.3
-
-# Database
-# sqlalchemy>=2.0.28
-# aiosqlite>=0.20.0
-
-# Testing
-# pytest>=8.0.2
-# pytest-asyncio>=0.23.5
-# httpx>=0.27.0
-
-# Add your project-specific dependencies below:
-# package-name>=version
-EOL
-        
-        python -m venv venv
-        source venv/bin/activate
-        pip install -r requirements.txt
-        cd ..
-      fi
+      # Backend creation removed for frontend-only project
       
-      echo "✨ Setup complete! Use 'dev-all' to start both servers"
-      echo "📝 Edit backend/requirements.txt to add your project dependencies"
+      echo "✨ Setup complete! Use 'dev-fe' to start the frontend server"
       
       echo "🚀 Starting Coding Phase Timer!" | figlet | lolcat
       vibe-timer 60 "Coding phase complete!" &
+      echo "Starting the frontend server with dev-fe ..."
+      dev-fe
     }
     
     echo "🚀 VibeJam Development Environment"
     echo "Available commands:"
-    echo "  quick-start   - Set up frontend and backend"
-    echo "  dev-all      - Start both servers in tmux"
+    echo "  quick-start   - Set up frontend"
     echo "  dev-fe       - Start frontend server"
-    echo "  dev-be       - Start backend server"
     echo "  fe-install   - Install frontend dependencies"
-    echo "  be-install   - Install backend dependencies"
     echo "  clean-caches - Clean all caches"
     echo ""
     echo "Docker commands:"
@@ -269,8 +214,6 @@ EOL
     echo ""
     echo "Hot reload commands:"
     echo "  hot-fe      - Start frontend with hot reload"
-    echo "  hot-be      - Start backend with hot reload"
-    echo "  hot-all     - Start both with hot reload in tmux"
     echo ""
     echo "VibeJam Session Tools:"
     echo "  vibe-session   - Start a new VibeJam session"
